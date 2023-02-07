@@ -2,7 +2,8 @@ const END_POINT = 'https://19.ecmascript.pages.academy/big-trip/';
 
 const SortType = {
   PRICE: 'price',
-  DAY: 'day'
+  DAY: 'day',
+  TIME: 'time'
 };
 
 const FilterType = {

@@ -6,7 +6,7 @@ function ucFirst(str) {
 }
 
 function padStartZero(number) {
- return number.toString().padStart(2, '0');
+  return number.toString().padStart(2, '0');
 }
 
 
