@@ -87,11 +87,13 @@ export default class PointsModel extends Observable {
       destination: destination,
       start: new Date(point.date_from),
       end: new Date(point.date_to),
-      price: point.base_price
+      price: point.base_price,
+      isFavorite: point.is_favorite
     };
     delete adaptPoint.date_to;
     delete adaptPoint.date_from;
     delete adaptPoint.base_price;
+    delete adaptPoint.is_favorite;
 
     return adaptPoint;
   };
@@ -103,12 +105,14 @@ export default class PointsModel extends Observable {
       destination: point.destination.id,
       'date_from': point.start.toISOString(),
       'date_to': point.end.toISOString(),
-      'base_price': point.price
+      'base_price': point.price,
+      'is_favorite': point.isFavorite
     };
 
     delete serverPoint.start;
     delete serverPoint.end;
     delete serverPoint.price;
+    delete serverPoint.isFavorite;
 
     return serverPoint;
   };

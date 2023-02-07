@@ -1,4 +1,4 @@
-const END_POINT = 'https://19.ecmascript.pages.academy/big-trip-simple';
+const END_POINT = 'https://19.ecmascript.pages.academy/big-trip/';
 
 const SortType = {
   PRICE: 'price',

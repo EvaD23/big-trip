@@ -227,7 +227,8 @@ export default class FormView extends AbstractStatefulView {
       start: new Date(),
       end: new Date(),
       isSaving: false,
-      isDisabled: false
+      isDisabled: false,
+      isFavorite: false
     };
   }
 

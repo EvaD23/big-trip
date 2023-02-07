@@ -43,7 +43,8 @@ export default class PointPresenter {
 
     this.#pointComponent = new PointView({
       point: this.#point,
-      onRollUp: this.#handlerRollUp
+      onRollUp: this.#handlerRollUp,
+      onFavoriteClick: this.#handlerFavoriteClick
     });
 
     if (prevPointComponent === null || prevEditFormComponent === null) {
@@ -148,6 +149,18 @@ export default class PointPresenter {
   #handlerRollUp = () => {
     this.#replacePointToForm();
     document.addEventListener('keydown', this.#escHandler);
+  };
+
+  #handlerFavoriteClick = () => {
+    const point = {
+      ...this.#point,
+      isFavorite: !this.#point.isFavorite
+    };
+    this.#handleDataChange(
+      UserAction.UPDATE_POINT,
+      UpdateType.PATCH,
+      point
+    );
   };
 
   #escHandler = (evt) => {
