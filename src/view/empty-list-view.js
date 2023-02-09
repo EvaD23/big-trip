@@ -4,7 +4,9 @@ import AbstractView from '../framework/view/abstract-view.js';
 const emptyPointsText = {
   [MessagesType.ALL]: 'Click New Event to create your first point',
   [MessagesType.FUTURE]: 'There are no future events now',
-  [MessagesType.ERROR]: 'Can\'t load information from server. Try later'
+  [MessagesType.ERROR]: 'Can\'t load information from server. Try later',
+  [MessagesType.PRESENT]: 'There are no present events now',
+  [MessagesType.PAST]: 'There are no past events now'
 };
 
 function createTemplate(filterType) {

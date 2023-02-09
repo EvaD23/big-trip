@@ -21,13 +21,10 @@ export default class FilterPresenter {
   init(filterType = FilterType.ALL) {
     this.#filterType = filterType;
     const prevFilterComponent = this.#filterComponent;
-    const filterFuture = filter[FilterType.FUTURE];
-    const isDisabledFuture = filterType === FilterType.ALL &&
-      filterFuture(this.#pointsModel.points).length === 0;
     this.#filterComponent = new FilterView({
       onChange: this.#handleFilterChange,
       filterType: filterType,
-      isDisabledFuture: isDisabledFuture
+      disableFilter: this.#disableFilter
     });
 
     if (!prevFilterComponent) {
@@ -37,6 +34,12 @@ export default class FilterPresenter {
     replace(this.#filterComponent, prevFilterComponent);
     remove(prevFilterComponent);
   }
+
+  #disableFilter = (filterType) => {
+    const filterFn = filter[filterType];
+    return filterType !== this.#filterType &&
+      filterFn(this.#pointsModel.points).length === 0;
+  };
 
   #handleFilterChange = (filterType) => {
     this.#filterModel.setFilter(UpdateType.MAJOR, filterType);

@@ -8,7 +8,9 @@ const SortType = {
 
 const FilterType = {
   ALL: 'ALL',
-  FUTURE: 'FUTURE'
+  FUTURE: 'FUTURE',
+  PRESENT: 'PRESENT',
+  PAST: 'PAST'
 };
 
 const MessagesType = {
