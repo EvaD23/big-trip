@@ -32,20 +32,18 @@ export default class PointsListPresenter {
   #loadingComponent = new LoadingView();
   #isLoading = true;
   #isError = false;
-  #disableButton = null;
   #uiBlocker = new UiBlocker({
     lowerLimit: TimeLimit.LOWER_LIMIT,
     upperLimit: TimeLimit.UPPER_LIMIT
   });
 
 
-  constructor({ pointsContainer, filterModel, onNewPointFormClose, pointsModel, destinationsModel, offersModel, disableButton }) {
+  constructor({ pointsContainer, filterModel, onNewPointFormClose, pointsModel, destinationsModel, offersModel }) {
     this.#pointsModel = pointsModel;
     this.#destinationsModel = destinationsModel;
     this.#offersModel = offersModel;
     this.#pointsContainer = pointsContainer;
     this.#filterModel = filterModel;
-    this.#disableButton = disableButton;
 
     this.#handleNewPointFormToClose = onNewPointFormClose;
     this.#pointsModel.addObserver(this.#handleModelEvent);
@@ -57,7 +55,7 @@ export default class PointsListPresenter {
     this.#renderList();
   }
 
-  openNewPointForm() {
+  openNewPointForm = () => {
     this.#handleModeChange();
 
     this.#newPointFormPresenter = new NewPointPresenter({
@@ -68,7 +66,7 @@ export default class PointsListPresenter {
       onDataChange: this.#handleViewAction
     });
     this.#newPointFormPresenter.init();
-  }
+  };
 
   #getPosition() {
     let position;
@@ -209,7 +207,6 @@ export default class PointsListPresenter {
         this.#isLoading = false;
         this.#isError = true;
         remove(this.#loadingComponent);
-        this.#disableButton();
         this.#renderList();
         break;
     }
